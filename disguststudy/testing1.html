@@ -68,16 +68,18 @@ img {
 
 
 <p>Lets do some testing</p>
+<hr />
 <p><strong>Difference in change between Intellectual and Social appeal for Whole cricket</strong></p>
 <p>A Mann-Whitney U test was used to test the hypothesis that there will be a significant difference between the change in self-reported likelihood of eating a cricket before and after by participants exposed to the intellectual appeal and the social appeal. The intellectual appeal condition had a mean rank of 181.32 and mean change of 0.23 (SD = 1.06), which was slightly greater than the social appeal condition which had the mean rank of 172.92 and mean change of 0.18 (SD = 0.82), however the intellectual appeal condition and the social appeal condition did not differ significantly (Z = -1, p = .316).</p>
+<p>Note : Group A is the intellectual Group and Group B is the social group</p>
 <pre class="r"><code># Whitney-Mann U (also known as two-sample Wilcoxon)
-x &lt;- dat$CricketChange[dat$Group==&quot;Group A&quot;]
-y &lt;- dat$CricketChange[dat$Group==&quot;Group B&quot;]
-wilcox.test(x, y, alternative = &quot;t&quot;, paired=FALSE)</code></pre>
+x1 &lt;- dat$CricketChange[dat$Group==&quot;Group A&quot;]
+y1 &lt;- dat$CricketChange[dat$Group==&quot;Group B&quot;]
+wilcox.test(x1, y1, alternative = &quot;t&quot;, paired=FALSE)</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
-## data:  x and y
+## data:  x1 and y1
 ## W = 15873.5, p-value = 0.3167
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 <pre class="r"><code>describe(dat$CricketChange[dat$Group==&quot;Group A&quot;])</code></pre>
@@ -86,24 +88,26 @@ wilcox.test(x, y, alternative = &quot;t&quot;, paired=FALSE)</code></pre>
 <pre class="r"><code>describe(dat$CricketChange[dat$Group==&quot;Group B&quot;])</code></pre>
 <pre><code>##   vars   n mean   sd median trimmed mad min max range skew kurtosis   se
 ## 1    1 202 0.18 0.82      0    0.09   0  -3   5     8 2.02    10.87 0.06</code></pre>
+<hr />
 <p><strong>Difference in change between Intellectual and Social appeal for Cricket bar</strong></p>
 <p>A Mann-Whitney U test was used to test the hypothesis that there will be a significant difference between the change in self-reported likelihood of eating a cricket based bar before and after given by participants exposed to the intellectual appeal and the social appeal. Change was significantly larger in the social appeal condition (mean rank= 185.12, mean change = 0.63, SD = 1.26) than the intellectual appeal condition (mean rank= 164.78, mean change=0.27, SD = 1.22), Z = -2.19, p = .028.</p>
 <pre class="r"><code># Whitney-Mann U (also known as two-sample Wilcoxon)
-x4 &lt;- dat$BarChange[dat$Group==&quot;Group A&quot;]
-y4 &lt;- dat$BarChange[dat$Group==&quot;Group B&quot;]
-wilcox.test(x4, y4, alternative = &quot;t&quot;, paired=FALSE)</code></pre>
+x2 &lt;- dat$BarChange[dat$Group==&quot;Group A&quot;]
+y2 &lt;- dat$BarChange[dat$Group==&quot;Group B&quot;]
+wilcox.test(x2, y2, alternative = &quot;t&quot;, paired=FALSE)</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
-## data:  x4 and y4
-## W = 13417, p-value = 0.06032
+## data:  x2 and y2
+## W = 13409, p-value = 0.02839
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 <pre class="r"><code>describe(dat$BarChange[dat$Group==&quot;Group A&quot;])</code></pre>
-<pre><code>##   vars   n mean   sd median trimmed  mad min max range skew kurtosis   se
-## 1    1 150 1.66 2.23      1    1.34 1.48  -5   9    14 1.19     2.17 0.18</code></pre>
+<pre><code>##   vars   n mean   sd median trimmed mad min max range skew kurtosis  se
+## 1    1 150 0.27 1.22      0    0.16   0  -5   5    10 0.19     5.87 0.1</code></pre>
 <pre class="r"><code>describe(dat$BarChange[dat$Group==&quot;Group B&quot;])</code></pre>
-<pre><code>##   vars   n mean   sd median trimmed  mad min max range skew kurtosis   se
-## 1    1 202 2.07 2.18      2    1.85 2.97  -2   8    10 0.72    -0.25 0.15</code></pre>
+<pre><code>##   vars   n mean   sd median trimmed mad min max range skew kurtosis   se
+## 1    1 202 0.63 1.26      0    0.42   0  -2   7     9 1.72      3.8 0.09</code></pre>
+<hr />
 <p><strong>Correlation in age and pre-influence rating for Whole cricket and Cricket bar</strong></p>
 <p>A Kendall’s tau b correlation found that there was a significant weak negative association between age and initial rating likelihood of eating a cricket (tau b(352) = -0.1, p &lt; .001, two-tailed) and likelihood of eating a cricket based bar (tau b(352) = -0.11, p = .005, two-tailed).</p>
 <pre class="r"><code># Kendalls Tau between Age and BeforeCricket, 
@@ -127,31 +131,32 @@ cor.test(dat$Age, dat$BeforeCricket, method=&quot;kendall&quot;, alternative=&qu
 ## sample estimates:
 ##        tau 
 ## -0.1076127</code></pre>
+<hr />
 <p><strong>Difference in gender on pre-influence rating for Whole cricket</strong></p>
 <p>A Mann-Whitney U test showed a significant difference between males (Mean Rank = 206.8) and females (Mean Rank= 156.25) on the self-reported likelihood of eating a cricket before appeal Z = -4.613, p = &lt;.001.</p>
 <pre class="r"><code># Whitney-Mann U (also known as two-sample Wilcoxon)
-
-library(&quot;coin&quot;)
-x1 &lt;- dat$BeforeCricket[dat$Sex==&quot;Female&quot;]
-y1 &lt;- dat$BeforeCricket[dat$Sex==&quot;Male&quot;]
-wilcox.test(x1, y1, alternative = &quot;t&quot;)</code></pre>
+x3 &lt;- dat$BeforeCricket[dat$Sex==&quot;Female&quot;]
+y3 &lt;- dat$BeforeCricket[dat$Sex==&quot;Male&quot;]
+wilcox.test(x3, y3, alternative = &quot;t&quot;)</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
-## data:  x1 and y1
+## data:  x3 and y3
 ## W = 10602.5, p-value = 3.978e-06
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<hr />
 <p><strong>Difference in gender on pre-influence rating for Cricket bar</strong></p>
 <p>A Mann-Whitney U test was used to test the hypothesis that there was a significant difference between males and females on the self-reported likelihood of eating a cricket bar before appeal, and revealed that the male (Mean Rank = 199.10) and female (Mean Rank=161.4) groups did differ significantly (Z = -3.46 p = .001)</p>
-<pre class="r"><code>x2 &lt;- dat$BeforeCricketBar[dat$Sex==&quot;Female&quot;]
-y2 &lt;- dat$BeforeCricketBar[dat$Sex==&quot;Male&quot;]
-wilcox.test(x2, y2, alternative = &quot;t&quot;)</code></pre>
+<pre class="r"><code>x4 &lt;- dat$BeforeCricketBar[dat$Sex==&quot;Female&quot;]
+y4 &lt;- dat$BeforeCricketBar[dat$Sex==&quot;Male&quot;]
+wilcox.test(x4, y4, alternative = &quot;t&quot;)</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
-## data:  x2 and y2
+## data:  x4 and y4
 ## W = 11688.5, p-value = 0.000534
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<hr />
 <p>Back to the main page</p>
 <p><a href="../index.html">Main page</a></p>
 
