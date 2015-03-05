@@ -144,6 +144,12 @@ wilcox.test(x3, y3, alternative = &quot;t&quot;)</code></pre>
 ## data:  x3 and y3
 ## W = 10602.5, p-value = 3.978e-06
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<pre class="r"><code>describe(dat$BeforeCricket[dat$Sex==&quot;Female&quot;])</code></pre>
+<pre><code>##   vars   n mean   sd median trimmed  mad min max range skew kurtosis   se
+## 1    1 211 4.76 3.35      5    4.58 4.45   1  10     9 0.27    -1.43 0.23</code></pre>
+<pre class="r"><code>describe(dat$BeforeCricket[dat$Sex==&quot;Male&quot;])</code></pre>
+<pre><code>##   vars   n mean   sd median trimmed  mad min max range  skew kurtosis   se
+## 1    1 141 6.45 3.11      7    6.68 4.45   1  10     9 -0.48    -1.13 0.26</code></pre>
 <hr />
 <p><strong>Difference in gender on pre-influence rating for Cricket bar</strong></p>
 <p>A Mann-Whitney U test was used to test the hypothesis that there was a significant difference between males and females on the self-reported likelihood of eating a cricket bar before appeal, and revealed that the male (Mean Rank = 199.10) and female (Mean Rank=161.4) groups did differ significantly (Z = -3.46 p = .001)</p>
@@ -156,6 +162,12 @@ wilcox.test(x4, y4, alternative = &quot;t&quot;)</code></pre>
 ## data:  x4 and y4
 ## W = 11688.5, p-value = 0.000534
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<pre class="r"><code>describe(dat$BeforeCricketBar[dat$Sex==&quot;Female&quot;])</code></pre>
+<pre><code>##   vars   n mean   sd median trimmed  mad min max range  skew kurtosis   se
+## 1    1 211 6.34 3.24      7    6.55 4.45   1  10     9 -0.34    -1.33 0.22</code></pre>
+<pre class="r"><code>describe(dat$BeforeCricketBar[dat$Sex==&quot;Male&quot;])</code></pre>
+<pre><code>##   vars   n mean   sd median trimmed  mad min max range skew kurtosis   se
+## 1    1 141 7.63 2.63      9    8.03 1.48   1  10     9   -1    -0.06 0.22</code></pre>
 <hr />
 <p>Back to the main page</p>
 <p><a href="../index.html">Main page</a></p>
