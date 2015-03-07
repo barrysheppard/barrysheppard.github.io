@@ -1,0 +1,351 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>JASP Results</title><style type="text/css">
+* {
+	-webkit-user-select: none;
+}
+
+body {
+	font-family: sans-serif ;
+	font-size: 12px ;
+	margin: 0 ;
+	cursor: default;
+}
+
+body.selected {
+	background-color: #E8E8E8 ;
+}
+
+h1 {
+	font-size: 150% ;
+	margin: .5em 0 ;
+}
+
+h2 {
+	font-size: 125% ;
+	margin: .7em 0 .2em ;
+}
+
+h3 {
+	font-size: 100% ;
+	margin: .5em 0 .2em ;
+}
+
+table {
+	font-size: 12px ;
+	font-style: normal ;
+	border-collapse: collapse ;
+	margin-bottom: 2em ;
+	cursor: default;
+}
+
+th {
+	vertical-align: bottom ;
+	font-weight: normal ;
+}
+
+th[colspan="2"] {
+	padding-left : 1em ;
+	padding-right: 1em ;
+}
+
+td.value {
+	padding-left : 1em ;
+	padding-right: 0 ;
+}
+
+td.symbol {
+	text-align: left ;
+	padding-right: 1em ;
+	padding-left: 0 ;
+}
+
+td {
+	text-align: right ;
+	vertical-align: top ;
+}
+
+thead tr:nth-child(2) th:not(.separator) {
+	min-width: 4em ;
+}
+
+th.separator, td.separator {
+	padding-left: 0px ;
+	padding-right: 0px ;
+}
+
+thead tr:first-child th {
+	padding: 6px 10px ;
+	font-style: bold ;
+	text-align: left ;
+	padding-left: 0 ;
+}
+
+thead th {
+	text-align: center;
+	white-space: nowrap;
+}
+
+tbody th {
+	text-align: left;
+}
+
+tbody th,
+tbody td {
+
+	border-bottom : none ;
+	border-top : none;
+	white-space: nowrap;
+}
+
+thead tr:last-child th:nth-child(1n + 2)
+{
+	border-top: thin solid ;
+}
+
+thead tr:nth-child(2) th
+{
+	border-top: thin solid ;
+}
+
+thead tr:last-child th
+{
+	border-bottom: thin solid ;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+
+	border-bottom: 2px solid ;
+}
+
+tbody tr td.new-group-row {
+
+	padding-top: .9em ;
+}
+
+tbody tr:nth-last-child(2) td.last-group-row {
+
+	padding-bottom: .8em ;
+}
+
+td.text {
+	text-align: left ;
+}
+
+tfoot td {
+
+	text-align: left;
+}
+
+.chart > g > rect { fill: #C9C682 }
+
+svg > text
+{
+	font-family: sans-serif ;
+	font-weight: bold;
+	font-size: 120% ;
+}
+
+.jasp-image {
+
+	float: left ;
+}
+
+.jasp-image {
+
+	border: 2px solid transparent ;
+	border-radius : 2px ;
+	padding: 0px ;
+	position: relative ;
+}
+
+.jasp-image-image {
+
+	width:  100% ;
+	height: 100% ;
+}
+
+.error-state .jasp-image-image {
+
+	opacity: 0.33 ;
+}
+
+.jasp-image-loader {
+
+	position: absolute ;
+	top : 0 ;
+	left: 0 ;
+	width: 100% ;
+	height: 100% ;
+	background-repeat:no-repeat;
+	background-position: center center;
+	visibility: hidden ;
+	z-index: 50 ;
+}
+
+.running .jasp-image-loader {
+
+	background-image : url('images/running-large.gif') ;
+	visibility: visible ;
+}
+
+.waiting .jasp-image-loader {
+
+	background-image : url('images/waiting-large.png') ;
+	visibility: visible ;
+}
+
+.jasp-image-resizer {
+
+	background-color : #BFD9F7 ;
+	border: 1px solid #7C95CB ;
+	border-radius : 3px ;
+	margin: 0px ;
+}
+
+.jasp-image-resizable {
+
+	border: 2px solid #BFD9F7 ;
+	border-radius : 2px ;
+}
+
+#instructions, .jasp-analysis-inner {
+
+	margin: .7em ;
+	padding: 1em ;
+	display: inline-block ;
+}
+
+.jasp-analysis.unselected .jasp-analysis-inner
+{
+	background-color: #E8E8E8 ;
+}
+
+.jasp-analysis.selected .jasp-analysis-inner
+{
+	background-color: white ;
+}
+
+div.toolbar
+{
+	padding-left : 1em ;
+	display: inline-block ;
+}
+
+div.toolbar-button
+{
+	width: 16px ;
+	height: 16px ;
+	background-size : 100% ;
+	cursor : pointer ;
+	display: inline-block ;
+	
+	margin-left: 3px ;
+	border: 1px solid transparent ;
+}
+
+div.toolbar-button:active {
+
+	border: 1px solid silver ;
+}
+
+div.copy {
+	background : url(images/copy.png) no-repeat;
+}
+
+div.cite {
+	background : url(images/cite.svg) no-repeat;
+}
+
+div.status
+{
+	width: 16px ;
+	height: 16px ;
+	background-size : 100% ;
+	display: inline-block ;
+	margin-left : 6px ;
+}
+
+div.status.running {
+
+	background : url(images/running.gif) no-repeat ;
+}
+
+div.status.waiting {
+
+	background : url(images/waiting.gif) no-repeat ;
+}
+
+.error-state {
+
+	color: silver ;
+}
+
+.error-message-positioner {
+
+	height: 0px ;
+	overflow: visible ;
+	position: relative;
+	top: 10px ;
+	float: left ;
+	z-index: 100 ;
+}
+
+.jasp-image-holder .error-message-positioner {
+
+	position: absolute ;
+	top: 25% ;
+}
+
+.error-message-symbol {
+
+	float: left;
+	margin-right: .3em;
+}
+
+.error-message-box {
+
+	z-index: 100 ;
+	padding: 1em ;
+	border-radius: .4em ;
+	min-width: 200px ;
+	max-width: 380px ;
+	white-space: normal;
+	margin-left: 50px ;
+}
+
+.error-message-message {
+
+}
+
+td.squash-left
+{
+	width: 99% ;
+}
+
+#intro {
+
+	padding: 1em 2em ;
+	margin: 50px auto ;
+	min-width: 300px ;
+	max-width: 500px ;
+	width: 50% ;
+	border: 3px dashed #3CAAE7 ;
+	border-radius: 10px ;
+	color: #3CAAE7 ;
+
+}
+</style></head>
+<body class="">
+	
+	
+	<div id="instructions" style="display: none;">
+		<h1>Instructions</h1>
+		<p>Below is the results table for your first analysis, highlighted in white.</p>
+		<p>To the left are the options for this analysis. As you choose options, the results table below will change to display the results.</p>
+		<p>When you have the analysis set up the way you want, you can click the OK button to return to the spreadsheet view.</p>
+		<p>If you decide you want to change the analysis later, you can simply click the results table again, and this will bring back the options.</p>
+	</div>
+	<div id="id-0" class="jasp-analysis"><div class="jasp-analysis-inner"><h1>Bayesian T-Test</h1><div class="jasp-table"><table><thead><tr><th colspan="6">Bayesian Independent Samples T-Test<div class="toolbar do-not-copy"><div class="status complete"></div><div class="copy toolbar-button" style="visibility: hidden;"></div><div class="cite toolbar-button" style="visibility: hidden;"></div></div></th></tr><tr><th colspan="2" class="string">&nbsp;</th><th colspan="2" class="number">BF₁₀</th><th colspan="2" class="number">error %</th></tr></thead><tbody><tr><td class="value text">CricketChange</td><td class="symbol text"></td><td class="value number">0.133</td><td class="symbol number"></td><td class="value number">7.976e −7</td><td class="symbol number"></td><td class="squash-left" rowspan="2"></td></tr><tr><td class="value text">BarChange</td><td class="symbol text"></td><td class="value number">3.921</td><td class="symbol number"></td><td class="value number">2.222e −8</td><td class="symbol number"></td></tr><tr><td colspan="6"></td></tr></tbody><tfoot></tfoot></table></div><div class="jasp-table"><table><thead><tr><th colspan="12">Group Descriptives<div class="toolbar do-not-copy"><div class="status complete"></div><div class="copy toolbar-button" style="visibility: visible;"></div><div class="cite toolbar-button" style="visibility: visible;"></div></div></th></tr><tr><th colspan="2" class="string">&nbsp;</th><th colspan="2" class="string">Group</th><th colspan="2" class="number">N</th><th colspan="2" class="number">Mean</th><th colspan="2" class="number">SD</th><th colspan="2" class="number">SE</th></tr></thead><tbody><tr><td class="value text new-group-row">CricketChange</td><td class="symbol text new-group-row"></td><td class="value text new-group-row">Group A</td><td class="symbol text new-group-row"></td><td class="value number new-group-row">150</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">0.227</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">1.056</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">0.086</td><td class="symbol number new-group-row"></td><td class="squash-left" rowspan="4"></td></tr><tr><td class="value text last-group-row">&nbsp;</td><td class="symbol text last-group-row"></td><td class="value text last-group-row">Group B</td><td class="symbol text last-group-row"></td><td class="value number last-group-row">202</td><td class="symbol number last-group-row"></td><td class="value number">0.178</td><td class="symbol number"></td><td class="value number">0.821</td><td class="symbol number"></td><td class="value number">0.058</td><td class="symbol number"></td></tr><tr><td class="value text new-group-row">BarChange</td><td class="symbol text new-group-row"></td><td class="value text new-group-row">Group A</td><td class="symbol text new-group-row"></td><td class="value number new-group-row">150</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">0.267</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">1.219</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">0.100</td><td class="symbol number new-group-row"></td></tr><tr><td class="value text last-group-row">&nbsp;</td><td class="symbol text last-group-row"></td><td class="value text last-group-row">Group B</td><td class="symbol text last-group-row"></td><td class="value number last-group-row">202</td><td class="symbol number last-group-row"></td><td class="value number">0.629</td><td class="symbol number"></td><td class="value number">1.256</td><td class="symbol number"></td><td class="value number">0.088</td><td class="symbol number"></td></tr><tr><td colspan="12"></td></tr></tbody><tfoot></tfoot></table></div><div class="jasp-images"><div class="jasp-images-image jasp-image"><h2>CricketChange</h2><div class="jasp-image-holder complete" style="width : 530px ; height : 400px ; "><div class="jasp-image-image" style="background-image : url('file:////Users/barrysheppard/.JASP/temp/16018/0/_8.png') ;background-size : 100% 100% ;"></div><div class="jasp-image-loader"></div></div></div><div class="jasp-images-image jasp-image"><h2>BarChange</h2><div class="jasp-image-holder complete" style="width : 530px ; height : 400px ; "><div class="jasp-image-image" style="background-image : url('file:////Users/barrysheppard/.JASP/temp/16018/0/_9.png') ;background-size : 100% 100% ;"></div><div class="jasp-image-loader"></div></div></div></div></div></div><div id="id-1" class="jasp-analysis"><div class="jasp-analysis-inner"><h1>Bayesian T-Test</h1><div class="jasp-table"><table><thead><tr><th colspan="6">Bayesian Independent Samples T-Test<div class="toolbar do-not-copy"><div class="status complete"></div><div class="copy toolbar-button" style="visibility: hidden;"></div><div class="cite toolbar-button" style="visibility: hidden;"></div></div></th></tr><tr><th colspan="2" class="string">&nbsp;</th><th colspan="2" class="number">BF₁₀</th><th colspan="2" class="number">error %</th></tr></thead><tbody><tr><td class="value text">BeforeCricket</td><td class="symbol text"></td><td class="value number">4829.1</td><td class="symbol number"></td><td class="value number">4.185e −12</td><td class="symbol number"></td><td class="squash-left" rowspan="2"></td></tr><tr><td class="value text">BeforeCricketBar</td><td class="symbol text"></td><td class="value number">181.8</td><td class="symbol number"></td><td class="value number">2.099e −10</td><td class="symbol number"></td></tr><tr><td colspan="6"></td></tr></tbody><tfoot></tfoot></table></div><div class="jasp-table"><table><thead><tr><th colspan="12">Group Descriptives<div class="toolbar do-not-copy"><div class="status complete"></div><div class="copy toolbar-button" style="visibility: hidden;"></div><div class="cite toolbar-button" style="visibility: hidden;"></div></div></th></tr><tr><th colspan="2" class="string">&nbsp;</th><th colspan="2" class="string">Group</th><th colspan="2" class="number">N</th><th colspan="2" class="number">Mean</th><th colspan="2" class="number">SD</th><th colspan="2" class="number">SE</th></tr></thead><tbody><tr><td class="value text new-group-row">BeforeCricket</td><td class="symbol text new-group-row"></td><td class="value text new-group-row">Female</td><td class="symbol text new-group-row"></td><td class="value number new-group-row">211</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">4.763</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">3.345</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">0.230</td><td class="symbol number new-group-row"></td><td class="squash-left" rowspan="4"></td></tr><tr><td class="value text last-group-row">&nbsp;</td><td class="symbol text last-group-row"></td><td class="value text last-group-row">Male</td><td class="symbol text last-group-row"></td><td class="value number last-group-row">141</td><td class="symbol number last-group-row"></td><td class="value number">6.447</td><td class="symbol number"></td><td class="value number">3.109</td><td class="symbol number"></td><td class="value number">0.262</td><td class="symbol number"></td></tr><tr><td class="value text new-group-row">BeforeCricketBar</td><td class="symbol text new-group-row"></td><td class="value text new-group-row">Female</td><td class="symbol text new-group-row"></td><td class="value number new-group-row">211</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">6.341</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">3.239</td><td class="symbol number new-group-row"></td><td class="value number new-group-row">0.223</td><td class="symbol number new-group-row"></td></tr><tr><td class="value text last-group-row">&nbsp;</td><td class="symbol text last-group-row"></td><td class="value text last-group-row">Male</td><td class="symbol text last-group-row"></td><td class="value number last-group-row">141</td><td class="symbol number last-group-row"></td><td class="value number">7.631</td><td class="symbol number"></td><td class="value number">2.631</td><td class="symbol number"></td><td class="value number">0.222</td><td class="symbol number"></td></tr><tr><td colspan="12"></td></tr></tbody><tfoot></tfoot></table></div><div class="jasp-images"><div class="jasp-images-image jasp-image"><h2>BeforeCricket</h2><div class="jasp-image-holder complete" style="width : 530px ; height : 400px ; "><div class="jasp-image-image" style="background-image : url('file:////Users/barrysheppard/.JASP/temp/16018/1/_21.png') ;background-size : 100% 100% ;"></div><div class="jasp-image-loader"></div></div></div><div class="jasp-images-image jasp-image"><h2>BeforeCricketBar</h2><div class="jasp-image-holder complete" style="width : 530px ; height : 400px ; "><div class="jasp-image-image" style="background-image : url('file:////Users/barrysheppard/.JASP/temp/16018/1/_22.png') ;background-size : 100% 100% ;"></div><div class="jasp-image-loader"></div></div></div></div></div></div><div id="id-2" class="jasp-analysis"><div class="jasp-analysis-inner"><h1>Bayesian Correlation Matrix</h1><div class="jasp-table"><table><thead><tr><th colspan="10">Bayesian Pearson Correlations<div class="toolbar do-not-copy"><div class="status complete"></div><div class="copy toolbar-button" style="visibility: hidden;"></div><div class="cite toolbar-button" style="visibility: hidden;"></div></div></th></tr><tr><th colspan="2" class="string">&nbsp;</th><th colspan="2" class="string">&nbsp;</th><th colspan="2" class="number">Age</th><th colspan="2" class="number">BeforeCricket</th><th colspan="2" class="number">BeforeCricketBar</th></tr></thead><tbody><tr><td class="value text new-group-row last-group-row" rowspan="2">Age</td><td class="symbol text new-group-row last-group-row" rowspan="2"></td><td class="value text new-group-row" rowspan="1">Pearson's R</td><td class="symbol text new-group-row" rowspan="1"></td><td class="value number new-group-row" rowspan="1">—</td><td class="symbol number new-group-row" rowspan="1"></td><td class="value number new-group-row" rowspan="1">−0.156</td><td class="symbol number new-group-row" rowspan="1"></td><td class="value number new-group-row" rowspan="1">−0.188</td><td class="symbol number new-group-row" rowspan="1"></td><td class="squash-left" rowspan="6"></td></tr><tr><td class="value text last-group-row" rowspan="1">BF₁₀</td><td class="symbol text last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1"></td><td class="symbol number last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1">4.978</td><td class="symbol number last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1">34.12</td><td class="symbol number last-group-row" rowspan="1"></td></tr><tr><td class="value text new-group-row last-group-row" rowspan="2">BeforeCricket</td><td class="symbol text new-group-row last-group-row" rowspan="2"></td><td class="value text new-group-row" rowspan="1">Pearson's R</td><td class="symbol text new-group-row" rowspan="1"></td><td class="value undefined new-group-row" rowspan="1">&nbsp;</td><td class="symbol undefined new-group-row" rowspan="1"></td><td class="value number new-group-row" rowspan="1">—</td><td class="symbol number new-group-row" rowspan="1"></td><td class="value number new-group-row" rowspan="1">0.834</td><td class="symbol number new-group-row" rowspan="1"></td></tr><tr><td class="value text last-group-row" rowspan="1">BF₁₀</td><td class="symbol text last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1"></td><td class="symbol number last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1"></td><td class="symbol number last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1">7.271e +16</td><td class="symbol number last-group-row" rowspan="1"></td></tr><tr><td class="value text new-group-row last-group-row" rowspan="2">BeforeCricketBar</td><td class="symbol text new-group-row last-group-row" rowspan="2"></td><td class="value text new-group-row" rowspan="1">Pearson's R</td><td class="symbol text new-group-row" rowspan="1"></td><td class="value undefined new-group-row" rowspan="1">&nbsp;</td><td class="symbol undefined new-group-row" rowspan="1"></td><td class="value undefined new-group-row" rowspan="1">&nbsp;</td><td class="symbol undefined new-group-row" rowspan="1"></td><td class="value number new-group-row" rowspan="1">—</td><td class="symbol number new-group-row" rowspan="1"></td></tr><tr><td class="value text last-group-row" rowspan="1">BF₁₀</td><td class="symbol text last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1"></td><td class="symbol number last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1"></td><td class="symbol number last-group-row" rowspan="1"></td><td class="value number last-group-row" rowspan="1"></td><td class="symbol number last-group-row" rowspan="1"></td></tr><tr><td colspan="10"></td></tr></tbody><tfoot></tfoot></table></div></div></div>
+
+
+</body></html>
